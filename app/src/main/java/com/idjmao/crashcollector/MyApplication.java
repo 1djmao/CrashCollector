@@ -2,6 +2,7 @@ package com.idjmao.crashcollector;
 
 import android.app.Application;
 
+import com.apkfuns.logutils.LogUtils;
 import com.idjmao.crashcollectorlib.CrashUtils;
 import com.idjmao.crashcollectorlib.ShardPreCollector;
 import com.idjmao.crashcollectorlib.SysSettingCollector;
@@ -16,7 +17,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         final CrashUtils crashUtils=new CrashUtils.Builder()
-                .folderPath("zzzzz")
+                .folderPath("zzh")
                 .mSettingCollector(new SysSettingCollector(this))
                 .mShardPreCollector(new ShardPreCollector(this,new String[]{"pre"}))
                 .build();
@@ -24,6 +25,10 @@ public class MyApplication extends Application {
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
             @Override
             public void uncaughtException(Thread t, Throwable e) {
+                if (e instanceof SecurityException){
+                    LogUtils.i(e);
+                    return;
+                }
                 crashUtils.getCrash(t,e);
                 System.exit(0);
             }

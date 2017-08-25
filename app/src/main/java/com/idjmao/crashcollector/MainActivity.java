@@ -34,10 +34,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.syssetting:
-
                 SysSettingCollector collector=new SysSettingCollector(this);
                 LogUtils.v(collector.collect());
-
                 break;
 
         }

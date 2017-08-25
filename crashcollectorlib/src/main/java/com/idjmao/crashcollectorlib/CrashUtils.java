@@ -20,11 +20,13 @@ public class CrashUtils {
         mSettingCollector = builder.mSettingCollector;
         folderPath = builder.folderPath;
 
-        LogUtils.getLog2FileConfig().configLog2FileEnable(true)
-                .configLog2FilePath(Environment.getExternalStorageDirectory().getAbsolutePath()
-                        +"/"+folderPath+"/")
-                .configLog2FileNameFormat("%d{yyyyMMdd}.txt")
-                .configLogFileEngine(new LogFileEngineFactory());
+        if (folderPath!=null){
+            LogUtils.getLog2FileConfig().configLog2FileEnable(true)
+                    .configLog2FilePath(Environment.getExternalStorageDirectory().getAbsolutePath()
+                            +"/"+folderPath+"/")
+                    .configLog2FileNameFormat("%d{yyyyMMdd}.txt")
+                    .configLogFileEngine(new LogFileEngineFactory());
+        }
 
     }
 

@@ -63,6 +63,8 @@ public class SysSettingCollector {
             e.printStackTrace();
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
+        } catch (SecurityException e){
+            e.printStackTrace();
         }
 
 
@@ -88,6 +90,8 @@ public class SysSettingCollector {
                         result.append(key.getName() + " = " + value + "\n");
                     }
                 } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }catch (SecurityException e){
                     e.printStackTrace();
                 }
             }
@@ -115,6 +119,8 @@ public class SysSettingCollector {
                         result.append(key.getName() + " = " + value + "\n");
                     }
                 } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }catch (SecurityException e){
                     e.printStackTrace();
                 }
             }
